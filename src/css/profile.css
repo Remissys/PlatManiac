@@ -1,0 +1,181 @@
+:root {
+    --gradient__game-card: linear-gradient(
+        to bottom in oklab,
+        rgba(26, 26, 26, 0) 0%,
+        rgba(26, 26, 26, 0.097) 3.3%,
+        rgba(26, 26, 26, 0.193) 6.5%,
+        rgba(26, 26, 26, 0.286) 9.7%,
+        rgba(26, 26, 26, 0.377) 13.1%,
+        rgba(26, 26, 26, 0.464) 16.8%,
+        rgba(26, 26, 26, 0.546) 20.9%,
+        rgba(26, 26, 26, 0.624) 25.6%,
+        rgba(26, 26, 26, 0.697) 31%,
+        rgba(26, 26, 26, 0.763) 37.3%,
+        rgba(26, 26, 26, 0.823) 44.5%,
+        rgba(26, 26, 26, 0.875) 52.9%,
+        rgba(26, 26, 26, 0.92) 62.4%,
+        rgba(26, 26, 26, 0.956) 73.4%,
+        rgba(26, 26, 26, 0.983) 85.9%,
+        rgb(26, 26, 26) 100%
+    );
+
+    --gradient: linear-gradient(
+        to top in oklab,
+        rgba(26, 26, 26, 0) 0%,
+        rgba(26, 26, 26, 0.097) 42%,
+        rgba(26, 26, 26, 0.286) 55%,
+        rgba(26, 26, 26, 0.697) 68%,
+        rgba(26, 26, 26, 0.92) 73.4%,
+        rgba(26, 26, 26, 0.983) 85.9%,
+        rgb(26, 26, 26) 100%
+    );
+}
+
+.profile-background {
+    background: linear-gradient(#4c3168 300px, #4c3168 350px, var(--main-bg-color) 450px);
+    width: 100%;
+    height: 80vh;
+}
+
+.profile-banner {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-position: 0 50%;
+}
+
+.profile-header {
+    height: 100px;
+    border-bottom: 1px var(--main-bg-color);
+    display: flex;
+    margin-bottom: 20px;
+    padding: 0 50px;
+}
+
+
+.profile-header__avatar {
+    height: 120px;
+    width: 120px;
+    border-radius: 20px;
+    align-self: flex-end;
+    margin-bottom: 30px;
+}
+
+.profile-header__name {
+    text-align: 18px;
+}
+
+.profile-body {
+    padding: 50px 0;
+}
+
+.profile-card {
+    border-radius: 4px;
+    padding: 12px 0;
+    display: block;
+}
+
+.profile-card__title {
+    font-weight: bold;
+    font-size: 18px;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, .25);
+}
+
+.game-card {
+    height: auto;
+    border-radius: 4px;
+    margin: 10px 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    padding: 12px;
+}
+
+.game-card__banner-container {
+    height: 50px;
+    width: 140px;
+}
+
+.game-banner {
+    width: 70%;
+    object-fit: cover;
+    object-position: 50% 60%;
+    border-radius: 4px 0 0 4px;
+}
+
+.game-info {
+    position: relative;
+    height: 150px;
+    width: 100%;
+    right: 0;
+    box-sizing: border-box;
+    align-items: end;
+    display: flex;
+}
+
+.game-info__title {
+    font-size: 20px;
+    margin: 0;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, .25);
+}
+
+.game-info__dropdown {
+    position: absolute;
+    right: 0;
+    padding-right: inherit;
+}
+
+.game-info__dropdown--btn {
+    height: 25px;
+    width: 25px;
+    border: none;
+    border-radius: 15px;
+    background: rgba(160, 160, 160, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-info__dropdown--icon {
+    height: 15px;
+}
+
+.js-hide-achievements {
+    display: none !important;
+}
+
+.game-details {
+    height: 450px;
+    max-height: 400px;
+    width: inherit;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.game-details__title {
+    /* margin-bottom: 20px; */
+}
+
+.game-details__box {
+    height: 250px;
+    width: 90%;
+    border: 1px #fff solid;
+    border-radius: 12px;
+    background-color: rgba(90, 90, 90, 0.4);
+    padding: 4px 12px;
+    box-sizing: border-box;
+}
+
+.game-details__achievements {
+    height: 150px;
+    overflow-y: scroll;
+}
+
+.game-details__achievements--icon {
+    height: 50px;
+    width: auto;
+    margin: 4px;
+}
