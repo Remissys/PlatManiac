@@ -22,7 +22,7 @@ export function requestLinkMounting(requestType, steamId=null, appId=null, extra
 
     if (extraParams) {
         for (let key in extraParams) {
-            requestLink += '&' + key + extraParams[key]
+            requestLink += '&' + key + '=' + extraParams[key]
         }
     }
 

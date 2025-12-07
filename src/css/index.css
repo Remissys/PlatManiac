@@ -1,5 +1,6 @@
 @import './header.css';
 @import './profile.css';
+@import './home.css';
 
 /* postcss([require('postcss-easing-gradients')]) */
 
@@ -91,12 +92,6 @@
 .main-body {
   margin-top: 100px;
   max-width: 1000px;
-}
-
-.home {
-  display: flex;
-  justify-content: space-between;
-  flex-flow: row wrap;
 }
 
 .card {

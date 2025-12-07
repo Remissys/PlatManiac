@@ -1,15 +1,11 @@
 import express from 'express'
 import cors from 'cors'
 
-import 'dotenv/config'
-
-console.log(process.env)
-
 const app = express()
 const port = 5000
 
 const corsOptions = {
-    origin: 'http://localhost:3000', // Replace with your frontend's origin
+    origin: 'http://localhost:3000',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
     allowedHeaders: 'Content-Type,Authorization',
@@ -24,6 +20,8 @@ app.get('/', (req, res) => {
 app.get('/requests/:function/:userid', async (req, res) => {
 
     var steamFunc = await import('./functions/steamRequests.js')
+
+    console.log(req.params)
 
     var func = req.params.function
     var userId = req.params.userid

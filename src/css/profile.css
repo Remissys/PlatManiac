@@ -155,10 +155,6 @@
     box-sizing: border-box;
 }
 
-.game-details__title {
-    /* margin-bottom: 20px; */
-}
-
 .game-details__box {
     height: 250px;
     width: 90%;

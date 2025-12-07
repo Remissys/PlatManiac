@@ -1,0 +1,41 @@
+.home {
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    padding: 80px 0;
+}
+
+.logo {
+    width: 100%;
+    max-width: 400px;
+}
+
+.search-bar {
+    display: flex;
+    height: 44px;
+    width: 100%;
+    position: relative;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.search-bar__input {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    background-color: rgb(22, 22, 22);
+    border: 1px solid white;
+    color: white;
+    padding: 0 12px;
+    box-sizing: border-box;
+    font-family: var(--main-font);
+    font-weight: bold;
+}
+
+.search-bar__tooltip {
+    position: relative;
+    width: auto;
+    background-color: rgb(22, 22, 22);
+}

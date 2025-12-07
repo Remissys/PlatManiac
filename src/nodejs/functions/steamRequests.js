@@ -4,7 +4,8 @@ import {
     GET_OWNED_GAMES,
     GET_PLAYER_ACHIEVEMENTS,
     GET_PLAYER_SUMMARIES,
-    GET_USER_STATS_FOR_GAME
+    GET_USER_STATS_FOR_GAME,
+    RESOLVE_VANITY_URL
 } from "../constants/steamApi.js";
 
 import {
@@ -14,15 +15,11 @@ import {
 /* Functions */
 
 export async function getUserInfo(userId) {
-
-    userId='76561198087187001'
     
     var link = requestLinkMounting(GET_PLAYER_SUMMARIES, userId)
     
     var info = await fetch(link)
         .then(res => res.json())
-
-    console.dir(info, {depth: null})
 
     return info.response
 }
@@ -34,6 +31,7 @@ export async function getPlayerGames(userId) {
     }
 
     var link_owned_games = requestLinkMounting(GET_OWNED_GAMES, userId, null, params)
+
     var owned_games_info = await fetch(link_owned_games).then(res => res.json())
 
     var game_ids = []
@@ -104,4 +102,16 @@ async function getAchievements(value, userId) {
             }) 
         }
     }
+}
+
+export async function validadeUrl(steamId) {
+   
+    var params = {
+        'vanityurl': steamId
+    }
+
+    var validation_link = requestLinkMounting(RESOLVE_VANITY_URL, null, null, params)
+    var validation = await fetch(validation_link).then(res => res.json())
+
+    return validation.response
 }

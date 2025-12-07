@@ -1,4 +1,16 @@
 import React from "react";
+import { useParams } from "react-router-dom";
+import { getBanner } from "../helpers/getBanner.js";
+
+function withHook (WrappedComponent) {
+    return function(props) {
+        const params = useParams()
+
+        return (
+            <WrappedComponent {...props} params={params}/>
+        )
+    }
+}
 
 class Profile extends React.Component {
 
@@ -9,17 +21,19 @@ class Profile extends React.Component {
         this.state = {
             openAchievList: null,
             perfectGames: [],
-            user: {}
+            user: {},
+            banner: require('../assets/banners/white_banner.jpg')
         }
     }
 
     componentDidMount() {
+        this.getRandomBanner()
         this.getPlayerInfo()
         this.getPlayerGameInfo()
     }
 
     async getPlayerGameInfo() {
-        var info = await fetch('http://localhost:5000/requests/getPlayerGames/76561198087187001').then(res => res.json())
+        var info = await fetch(`http://localhost:5000/requests/getPlayerGames/${this.props.params.steamId}`).then(res => res.json())
         var perfectGames = []
 
         info.map((value) => {
@@ -46,7 +60,7 @@ class Profile extends React.Component {
     }
 
     async getPlayerInfo() {
-        var info = await fetch('http://localhost:5000/requests/getUserInfo/76561198087187001').then(res => res.json())
+        var info = await fetch(`http://localhost:5000/requests/getUserInfo/${this.props.params.steamId}`).then(res => res.json())
 
         var user = {
             steamid: info.players[0].steamid,
@@ -57,9 +71,15 @@ class Profile extends React.Component {
         this.setState({user})
     }
 
-    showGameAchievements(id) {
-        console.log('oi', id, this.state.openAchievList)
+    getRandomBanner() {
+        var banner = getBanner()
 
+        this.setState({
+            banner: banner
+        }, () => console.log(this.state.banner))
+    }
+
+    showGameAchievements(id) {
         if (this.state.openAchievList === id) {
             document.getElementById(this.state.openAchievList).classList.add('js-hide-achievements')
 
@@ -83,7 +103,7 @@ class Profile extends React.Component {
     render() {
         return (
             <div className="profile-background">
-                <img src='https://cdn.cloudflare.steamstatic.com/steam/apps/2258500/library_hero.jpg' alt='' className="profile-banner"/>
+                <img src={this.state.banner} alt='' className="profile-banner"/>
                 <div className="profile-header">
                     <img src={this.state.user.avatarfull} alt={this.state.user.personname} className="profile-header__avatar"/>
                     <p className="profile-header__name">{this.state.user.personname}</p>
@@ -103,7 +123,7 @@ class Profile extends React.Component {
                                 </div>
                                 <div id={`achievList-${index}`} className="game-details js-hide-achievements">
                                     <div className="game-details__box">
-                                        <div className="game-details__title">
+                                        <div>
                                             <p className="test">Progress</p>
                                             <p className="test">Achievements</p>
                                         </div>
@@ -123,4 +143,4 @@ class Profile extends React.Component {
     }
 }
 
-export default Profile;
+export default withHook(Profile);

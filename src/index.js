@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { useParams } from "react-router-dom";
 
 import {
   BrowserRouter,
@@ -20,7 +21,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path='/profile/:steamId' element={<Profile/>}/>
+        <Route exact path='/profile/:steamId' element={<Profile/>}/>
       </Routes>
     </BrowserRouter>
   )
